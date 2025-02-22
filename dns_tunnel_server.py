@@ -18,7 +18,7 @@ class DNSTunnelResolver(BaseResolver):
             response_text = response.text[:200]  # Limit response size
 
             # Encode response in Base64
-            encoded_response = base64.urlsafe_b64encode(response_text.encode()).decode()
+            encoded_response = base64.urlsafe_b64encode(response_text.encode('utf-8')).decode()
             chunks = [encoded_response[i:i+255] for i in range(0, len(encoded_response), 255)]
             
         except Exception as e:
